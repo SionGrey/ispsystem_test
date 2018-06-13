@@ -19,22 +19,18 @@ export class EmojisService {
   getEmojis(): Observable<EmojisModel[]> {
     return this._http.get(this._emojisUrl).map((response: Response) => {
       const emojis = response.json();
-      let tempEmojis: EmojisModel[] = [];
       if (localStorage.emojisSaved) {
-        tempEmojis = JSON.parse(localStorage.getItem('emojisSaved'));
+        this.emojiListRead = JSON.parse(localStorage.getItem('emojisSaved'));
       }
       for (const [key, value] of Object.entries(emojis)) {
         const emoji: IEmojis = new EmojisModel(`${key}`, `${value}`);
-        const index = this.emojiListRead.indexOf(emoji);
-        if (index === -1) {
+        const exist = this.emojiListRead.some((item) => item.name === key);
+        if (!exist) {
           this.emojiListRead.push(emoji);
-        } else {
-          this.emojiListRead.push(tempEmojis[index]);
-          tempEmojis.splice(index, 1);
         }
       }
     })
-    .catch(this.handleError);
+      .catch(this.handleError);
   }
   private  handleError(error: Response) {
     console.error(error);

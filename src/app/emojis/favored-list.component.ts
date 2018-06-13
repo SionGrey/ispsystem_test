@@ -8,7 +8,8 @@ import {EmojisService} from './emojis.service';
   templateUrl: 'favored-list.component.html',
 })
 
-export class FavoredListComponent implements OnDestroy {pageTitle: string = 'List of Deleted Emoji';
+export class FavoredListComponent implements OnDestroy {
+  pageTitle: string = 'Любимые';
   imageWidth: number = 25;
   listFilter: string;
   emojis: IEmojis[] = [];
@@ -26,7 +27,6 @@ export class FavoredListComponent implements OnDestroy {pageTitle: string = 'Lis
   emRemove(elem): void {
     elem.isFavored = false;
     this._emojisService.emojiListWrite.splice(this._emojisService.emojiListWrite.indexOf(elem), 1);
-    console.log('restored!');
   }
   ngOnDestroy (): void {
     localStorage.setItem('emojisSaved', JSON.stringify(this._emojisService.emojiListWrite));

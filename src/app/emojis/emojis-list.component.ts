@@ -9,7 +9,7 @@ import {EmojisService} from './emojis.service';
 })
 
 export class EmojisListComponent implements OnDestroy {
-  pageTitle: string = 'List of Emoji';
+  pageTitle: string = 'Все';
   imageWidth: number = 25;
   listFilter: string;
   errorMessage: string;
@@ -28,13 +28,11 @@ export class EmojisListComponent implements OnDestroy {
   emLike(elem): void {
     elem.isFavored = true;
     this._emojisService.emojiListWrite.push(elem);
-    console.log(elem, 'liked!');
   }
   emDelete(elem): void {
     elem.isDeleted = true;
     elem.isFavored = false;
     this._emojisService.emojiListWrite.push(elem);
-    console.log(elem, 'deleted!');
   }
   ngOnDestroy (): void {
     localStorage.setItem('emojisSaved', JSON.stringify(this._emojisService.emojiListWrite));

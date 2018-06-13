@@ -28,7 +28,7 @@
       </tr>
       </thead>
       <tbody>
-      <ng-container *ngFor='let emoji of emojis | emojisFilter:listFilter | paginate: { id: "faved", itemsPerPage: 30, currentPage: p }'>
+      <ng-container *ngFor='let emoji of emojis | emojisFilter:listFilter | paginate: { id: "faved", itemsPerPage: 15, currentPage: p }'>
         <tr *ngIf='emoji.isFavored'>
           <td>{{emoji.name}}</td>
           <td>{{emoji.url}}</td>

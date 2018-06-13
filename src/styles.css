@@ -29,3 +29,6 @@ img.liked {
 .glyphicon {
   cursor: pointer;
 }
+.container {
+  margin-top: 25px;
+}

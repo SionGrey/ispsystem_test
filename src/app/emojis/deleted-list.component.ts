@@ -9,7 +9,7 @@ import {EmojisService} from './emojis.service';
 })
 
 export class DeletedListComponent implements OnDestroy {
-  pageTitle: string = 'List of Deleted Emoji';
+  pageTitle: string = 'Удалённые';
   imageWidth: number = 25;
   listFilter: string;
   emojis: IEmojis[] = [];
@@ -27,7 +27,6 @@ export class DeletedListComponent implements OnDestroy {
   emRestore(elem): void {
     elem.isDeleted = false;
     this._emojisService.emojiListWrite.splice(this._emojisService.emojiListWrite.indexOf(elem), 1);
-    console.log('restored!');
   }
   ngOnDestroy (): void {
     localStorage.setItem('emojisSaved', JSON.stringify(this._emojisService.emojiListWrite));
