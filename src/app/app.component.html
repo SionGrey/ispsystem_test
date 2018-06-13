@@ -1,0 +1,20 @@
+<!--The whole content below can be removed with the new code.-->
+<div class='container'>
+    <div class='col-md-2'>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/emojis'] ">Base</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/deleted']">Deleted</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/favored']">Favored</a>
+        </li>
+      </ul>
+    </div>
+  <div class='col-md-10'>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

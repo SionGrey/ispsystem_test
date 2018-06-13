@@ -1,0 +1,48 @@
+<div class='panel panel-primary'>
+  <div class='panel-heading'>
+    <div class='row'>
+      <div class='col-md-6'>{{pageTitle}}</div>
+      <div class='col-md-2'>Filter by:</div>
+      <div class='col-md-4'>
+        <input type='text'
+               [(ngModel)]='listFilter'
+        />
+      </div>
+    </div>
+  </div>
+  <div class='panel-body'>
+    <div class='row'>
+      <div class='col-md-6'>
+        <h3>Filtered by: {{ listFilter }}</h3>
+      </div>
+    </div>
+
+      <table class='table table-striped emoji-table' *ngIf='emojis && emojis.length'>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Link</th>
+          <th>Icon</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor='let emoji of emojis | emojisFilter:listFilter | paginate: { id: "base", itemsPerPage: 30, currentPage: p }'>
+            <tr *ngIf='!emoji.isDeleted'>
+              <td>{{emoji.name}}</td>
+              <td>{{emoji.url}}</td>
+              <td><img
+                [src]=emoji.url
+                [style.width.px]=imageWidth
+                [class.liked]=emoji.isFavored
+              ></td>
+              <td><i class='glyphicon glyphicon-star' (click)='emLike(emoji)' ></i></td>
+              <td><i class='glyphicon glyphicon-remove-circle' (click)='emDelete(emoji)'></i></td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    <pagination-controls id='base'class='my-pagination' (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

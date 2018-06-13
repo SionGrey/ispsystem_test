@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+li {
+    font-size: large;
+}
+
+div.panel-heading {
+   font-size: x-large;
+}
+img{
+  opacity: 0.4;
+  filter: alpha(Opacity=40);
+  transition: transform .1s;
+}
+img:hover {
+  transform: scale(5.2);
+  opacity: 1;
+  filter: alpha(Opacity=100);
+}
+img.liked {
+  opacity: 1;
+  filter: alpha(Opacity=100);
+}
+.my-pagination ul.ngx-pagination {
+  text-align: center;
+}
+.panel-heading input {
+  color: #337ab7;
+}
+.glyphicon {
+  cursor: pointer;
+}
