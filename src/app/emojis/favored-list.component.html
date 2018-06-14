@@ -28,7 +28,8 @@
       </tr>
       </thead>
       <tbody>
-      <ng-container *ngFor='let emoji of emojis | emojisFilter:listFilter | paginate: { id: "faved", itemsPerPage: 15, currentPage: p }'>
+      <perfect-scrollbar>
+      <ng-container *ngFor='let emoji of emojis | emojisFilter:listFilter'>
         <tr *ngIf='emoji.isFavored'>
           <td>{{emoji.name}}</td>
           <td>{{emoji.url}}</td>
@@ -41,9 +42,9 @@
           <td><i class='glyphicon glyphicon-remove-sign' (click)='emRemove(emoji)'></i></td>
         </tr>
       </ng-container>
+      </perfect-scrollbar>
       </tbody>
     </table>
-    <pagination-controls id='faved' class='my-pagination' (pageChange)="p = $event"></pagination-controls>
   </div>
 </div>
 

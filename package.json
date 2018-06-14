@@ -26,6 +26,7 @@
     "jw-angular-pagination": "^1.0.4",
     "ng2-cookies": "^1.0.12",
     "ngx-pagination": "^3.1.1",
+    "ngx-perfect-scrollbar": "^6.2.0",
     "rxjs": "^5.4.1",
     "zone.js": "^0.8.14"
   },

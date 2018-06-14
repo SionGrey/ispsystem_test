@@ -10,6 +10,13 @@ import {RouterModule} from '@angular/router';
 import {DeletedListComponent} from './emojis/deleted-list.component';
 import {FavoredListComponent} from './emojis/favored-list.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
 @NgModule({
   declarations: [
@@ -24,6 +31,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     HttpModule,
     NgxPaginationModule,
+    PerfectScrollbarModule,
     RouterModule.forRoot([
       { path: 'emojis', component: EmojisListComponent },
       { path: 'deleted', component: DeletedListComponent },
@@ -32,7 +40,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
       {path: '**', redirectTo: 'emojis', pathMatch: 'full'},
     ], )
   ],
-  providers: [],
+  providers: [{
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
