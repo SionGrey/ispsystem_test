@@ -18,16 +18,15 @@
       <table class='table table-striped emoji-table' *ngIf='emojis && emojis.length'>
         <thead>
         <tr>
-          <th>Name</th>
-          <th>Link</th>
-          <th>Icon</th>
+          <th>Имя</th>
+          <th>Ссылка</th>
+          <th>Превью</th>
           <th></th>
           <th></th>
         </tr>
         </thead>
-        <tbody>
-          <ng-container *ngFor='let emoji of emojis | emojisFilter:listFilter | paginate: { id: "base", itemsPerPage: 15, currentPage: p }'>
-            <tr *ngIf='!emoji.isDeleted'>
+        <tbody *ngFor='let emoji of emojisFiltered | emojisSearch:listFilter | paginate: { id: "base", itemsPerPage: 15, currentPage: p }'>
+            <tr>
               <td>{{emoji.name}}</td>
               <td>{{emoji.url}}</td>
               <td><img
@@ -38,8 +37,8 @@
               <td><i class='glyphicon glyphicon-star' (click)='emLike(emoji)' ></i></td>
               <td><i class='glyphicon glyphicon-remove-circle' (click)='emDelete(emoji)'></i></td>
             </tr>
-          </ng-container>
         </tbody>
+
       </table>
     <pagination-controls id='base'class='my-pagination' (pageChange)="p = $event"></pagination-controls>
   </div>

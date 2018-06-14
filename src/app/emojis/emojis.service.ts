@@ -9,8 +9,7 @@ import {EmojisModel} from './emojis.model';
 
 @Injectable()
 export class EmojisService {
-  private _qemojisUrl = './api/emojis/emojis.json';
-  private _emojisUrl = 'https://api.github.com/emojis';
+  private _emojisUrl = 'https://api.github.com/emojis?access_token=d7223f5526426edcf604c21eb3b27c2fbd947ce7';
   emojiListRead: EmojisModel[] = [];
   emojiListWrite: EmojisModel[] = [];
 
@@ -21,6 +20,7 @@ export class EmojisService {
       const emojis = response.json();
       if (localStorage.emojisSaved) {
         this.emojiListRead = JSON.parse(localStorage.getItem('emojisSaved'));
+        this.emojiListWrite = JSON.parse(localStorage.getItem('emojisSaved'));
       }
       for (const [key, value] of Object.entries(emojis)) {
         const emoji: IEmojis = new EmojisModel(`${key}`, `${value}`);

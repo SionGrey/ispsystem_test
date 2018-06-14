@@ -5,7 +5,6 @@ export class EmojisModel {
   isFavored: boolean = false;
 
   constructor(name, url) {
-    /*Object.assign(this, rawData);*/
     this.name = name;
     this.url = url;
     this.isFavored = this.isDeleted = false;
