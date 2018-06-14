@@ -9,7 +9,7 @@ import {EmojisModel} from './emojis.model';
 
 @Injectable()
 export class EmojisService {
-  private _emojisUrl = 'https://api.github.com/emojis?access_token=d7223f5526426edcf604c21eb3b27c2fbd947ce7';
+  private _emojisUrl = 'https://api.github.com/emojis';
   emojiListRead: EmojisModel[] = [];
   emojiListWrite: EmojisModel[] = [];
 
